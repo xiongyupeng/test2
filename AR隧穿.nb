@@ -1,0 +1,584 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     20928,        575]
+NotebookOptionsPosition[     19911,        542]
+NotebookOutlinePosition[     20389,        560]
+CellTagsIndexPosition[     20346,        557]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{
+   RowBox[{"Clear", " ", "All"}], "  "}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+   "SetDirectory", "[", "\"\<E:\\Users\\xiong\\Documents\\Mathematica\>\"", 
+    "]"}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"curr", "=", 
+    RowBox[{"OpenWrite", "[", "\"\<current11.dat\>\"", "]"}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   StyleBox["Do",
+    FontSize->16], 
+   StyleBox["[",
+    FontSize->16], 
+   RowBox[{
+    RowBox[{
+     StyleBox["{",
+      FontSize->16], 
+     StyleBox["\[IndentingNewLine]",
+      FontSize->16], 
+     RowBox[{
+      StyleBox[
+       RowBox[{"\[CapitalDelta]", "=", "0.2"}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"\[Mu]", "=", "0.3"}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"m0", "=", "1.0"}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"L0", "=", "5.0"}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"En", "=", "ny"}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{
+        RowBox[{"F0", "[", "zn_", "]"}], ":=", 
+        RowBox[{
+         FractionBox[
+          RowBox[{"zn", "*", "zn", "*", "zn", "*", "zn"}], 
+          RowBox[{"4.0", "*", "m0", "*", "m0"}]], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            FractionBox["\[Mu]", "m0"], "-", 
+            RowBox[{"\[CapitalDelta]", "*", "\[CapitalDelta]"}]}], ")"}], "*",
+           "zn", "*", "zn"}], "+", 
+         RowBox[{"\[Mu]", "*", "\[Mu]"}], "-", 
+         RowBox[{"En", "*", "En"}]}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"zpn", "=", 
+        RowBox[{"zn", "/.", 
+         RowBox[{"Solve", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"F0", "[", "zn", "]"}], "\[Equal]", "0"}], ",", "zn"}], 
+          "]"}]}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"xn", "=", "zpn"}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"z1", "=", 
+        RowBox[{"Part", "[", 
+         RowBox[{"xn", ",", "1"}], "]"}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"z2", "=", 
+        RowBox[{"Part", "[", 
+         RowBox[{"xn", ",", "2"}], "]"}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"z3", "=", 
+        RowBox[{"Part", "[", 
+         RowBox[{"xn", ",", "3"}], "]"}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{"z4", "=", 
+        RowBox[{"Part", "[", 
+         RowBox[{"xn", ",", "4"}], "]"}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox[
+       RowBox[{
+        RowBox[{"F1", "[", "zn_", "]"}], ":=", 
+        RowBox[{"(", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"zn", "*", "zn"}], 
+           RowBox[{"2.0", "*", "m0"}]], "+", "\[Mu]", "-", "En"}], ")"}]}],
+       FontSize->16], 
+      StyleBox[";",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      RowBox[{
+       StyleBox[
+        RowBox[{"F2", "[", "zn_", "]"}],
+        FontSize->16], 
+       StyleBox[":=",
+        FontSize->16], 
+       FractionBox[
+        RowBox[{"F1", "[", "zn", "]"}], 
+        RowBox[{
+         StyleBox[" ",
+          FontSize->16], 
+         RowBox[{
+          StyleBox["zn",
+           FontSize->16], 
+          StyleBox["*",
+           FontSize->16], 
+          RowBox[{
+           StyleBox["Tanh",
+            FontSize->16], 
+           StyleBox["[",
+            FontSize->16], 
+           FractionBox[
+            RowBox[{"zn", "*", "L0"}], "2"], 
+           StyleBox["]",
+            FontSize->16]}]}]}]]}], ";", 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      StyleBox["\[IndentingNewLine]",
+       FontSize->16], 
+      RowBox[{
+       StyleBox["cha",
+        FontSize->16], 
+       StyleBox[" ",
+        FontSize->16], 
+       StyleBox["=",
+        FontSize->16], 
+       StyleBox[" ",
+        FontSize->16], 
+       RowBox[{
+        StyleBox[
+         RowBox[{"F2", "[", "z3", "]"}],
+         FontSize->16], 
+        StyleBox["-",
+         FontSize->16], 
+        RowBox[{
+         StyleBox[
+          RowBox[{"F2", "[", "z4", "]"}],
+          FontSize->16], "\[IndentingNewLine]", 
+         StyleBox["\[IndentingNewLine]",
+          FontSize->16], 
+         StyleBox[
+          RowBox[{"WriteString", "[", 
+           RowBox[{"curr", ",", 
+            RowBox[{"ny", "//", "FortranForm"}], ",", "\"\<\\t\>\"", ",", 
+            RowBox[{"cha", "//", "FortranForm"}], ",", "\"\<\\t\>\"", ",", 
+            RowBox[{"cha", "//", "FortranForm"}], ",", "\"\<\\n\>\""}], "]"}],
+          FontSize->16]}]}]}]}], 
+     StyleBox["}",
+      FontSize->16]}], 
+    StyleBox[",",
+     FontSize->16], 
+    StyleBox[
+     RowBox[{"{", 
+      RowBox[{"ny", ",", 
+       RowBox[{"-", "0.8"}], ",", "0.8", ",", "0.001"}], "}"}],
+     FontSize->16]}], 
+   StyleBox["]",
+    FontSize->16]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Close", "[", "curr", "]"}], ";"}],
+  FontSize->16], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.683927790643604*^9, 3.6839277906516037`*^9}, {
+   3.683927868773604*^9, 3.6839282494416037`*^9}, {3.683928310084604*^9, 
+   3.683928377977604*^9}, {3.6839285543096037`*^9, 3.683928630928604*^9}, {
+   3.6839286871536036`*^9, 3.6839287480726037`*^9}, {3.6839288259366035`*^9, 
+   3.683928903520604*^9}, {3.683928957067604*^9, 3.683929048150604*^9}, {
+   3.6839290903916035`*^9, 3.683929177954604*^9}, {3.6839293447696037`*^9, 
+   3.683929374581604*^9}, {3.6839297442076035`*^9, 3.683929763806604*^9}, {
+   3.683930600774604*^9, 3.6839306510326037`*^9}, {3.683931152982604*^9, 
+   3.6839311713516035`*^9}, {3.6839314194296036`*^9, 3.683931420239604*^9}, {
+   3.6839314702856035`*^9, 3.6839314771086035`*^9}, {3.683931756409604*^9, 
+   3.6839318168416038`*^9}, {3.683931880515604*^9, 3.6839319360286036`*^9}, 
+   3.683931982812604*^9, 3.6839320355356035`*^9, {3.683932084225604*^9, 
+   3.6839322886746035`*^9}, {3.6839323333876038`*^9, 
+   3.6839324086606035`*^9}, {3.683932487003604*^9, 3.6839327402526035`*^9}, {
+   3.6839341681656036`*^9, 3.683934297122604*^9}, {3.683934346919604*^9, 
+   3.683934402579604*^9}, {3.683934587345604*^9, 3.683934622353604*^9}, {
+   3.6839347732826037`*^9, 3.683934864630604*^9}, 3.683934913025604*^9, {
+   3.683934972767604*^9, 3.683934976255604*^9}, {3.683935041668604*^9, 
+   3.683935042742604*^9}, {3.683935220497604*^9, 3.683935265949604*^9}, {
+   3.683935296530604*^9, 3.683935383449604*^9}, {3.6839354716066036`*^9, 
+   3.683935564662604*^9}, {3.6839356074406037`*^9, 3.6839356205756035`*^9}, 
+   3.683935738813604*^9, 3.683935784794604*^9, {3.6839358173876038`*^9, 
+   3.6839359844836035`*^9}, {3.6839360146656036`*^9, 
+   3.6839360795986037`*^9}, {3.6839361836916037`*^9, 
+   3.6839362068876038`*^9}, {3.683936698883604*^9, 3.6839367275826035`*^9}, {
+   3.683936758793604*^9, 3.6839368133256035`*^9}, {3.683936854937604*^9, 
+   3.683936932446604*^9}, {3.6839370838446035`*^9, 3.6839371064366035`*^9}, 
+   3.683937156722604*^9, {3.684700498543942*^9, 3.684700846759859*^9}, {
+   3.6847017130054054`*^9, 3.6847017245280647`*^9}, {3.684701986674058*^9, 
+   3.6847021780560045`*^9}, 3.6847029438308043`*^9, {3.6875578287818766`*^9, 
+   3.687557891034877*^9}, {3.6875579500718765`*^9, 3.6875580201678767`*^9}, {
+   3.687558091273877*^9, 3.687558104464877*^9}, {3.687558213027877*^9, 
+   3.6875582534798765`*^9}, {3.6875582841168766`*^9, 3.687558349070877*^9}, {
+   3.6875583937418766`*^9, 3.6875585181418767`*^9}, {3.687558672153877*^9, 
+   3.687558767164877*^9}, {3.6875588561548767`*^9, 3.6875588722678766`*^9}, {
+   3.687558945007877*^9, 3.687558945221877*^9}, {3.687559404283877*^9, 
+   3.687559433107877*^9}, 3.687559490945877*^9, {3.687559538501877*^9, 
+   3.687559559311877*^9}, {3.687559622407877*^9, 3.6875597904448767`*^9}, {
+   3.687559979742877*^9, 3.6875599874068766`*^9}, {3.687560642761877*^9, 
+   3.687560663573877*^9}, {3.6875606946688766`*^9, 3.6875607059118767`*^9}, 
+   3.687560770393877*^9, {3.6875636661948767`*^9, 3.687563729673877*^9}, {
+   3.687563760523877*^9, 3.6875638790178766`*^9}, {3.687563946388877*^9, 
+   3.6875642331778765`*^9}, {3.6875644910108767`*^9, 3.687564491592877*^9}, {
+   3.687564532907877*^9, 3.687564534249877*^9}, {3.6877558437634273`*^9, 
+   3.687755932426427*^9}, {3.687756001153427*^9, 3.687756017089427*^9}, {
+   3.687756077172427*^9, 3.687756111603427*^9}, {3.687756606773427*^9, 
+   3.687756886959427*^9}, {3.6877617171494274`*^9, 3.687761837831427*^9}, {
+   3.6877627374304276`*^9, 3.687762743009427*^9}, 3.687762909160427*^9, {
+   3.7021671329729786`*^9, 3.702167189373015*^9}, 3.7021672252314625`*^9, {
+   3.7021672990108647`*^9, 3.702167304845002*^9}, 3.7021674043286324`*^9, 
+   3.7021674973266582`*^9, {3.702167547069975*^9, 3.7021675473431687`*^9}, {
+   3.7021675778918858`*^9, 3.7021675800624*^9}, {3.702167637005827*^9, 
+   3.7021676384408464`*^9}, 3.7021677976622667`*^9, {3.708472623426696*^9, 
+   3.7084728066668463`*^9}, {3.7084728687152057`*^9, 
+   3.7084729515484867`*^9}, {3.7084729991758056`*^9, 3.7084730389096193`*^9}, 
+   3.708473087329265*^9, {3.7084732024893365`*^9, 3.7084732035959663`*^9}, 
+   3.708473343742817*^9, {3.708474646239865*^9, 3.7084747023107347`*^9}, {
+   3.7084749265085278`*^9, 3.7084749512173057`*^9}, {3.708488720899331*^9, 
+   3.708488726882913*^9}, {3.708488769460075*^9, 3.7084887989696836`*^9}, {
+   3.7084889160046687`*^9, 3.708488916406412*^9}, {3.7084891753976765`*^9, 
+   3.7084892129238663`*^9}, 3.708489244255162*^9},
+ EmphasizeSyntaxErrors->True],
+
+Cell[BoxData[
+ RowBox[{"All", " ", "Clear"}]], "Output",
+ CellChangeTimes->{{3.7021672060268526`*^9, 3.70216722805647*^9}, 
+   3.7021673066282825`*^9, 3.702167405422421*^9, 3.702167498366396*^9, {
+   3.702167552583889*^9, 3.7021675809690437`*^9}, 3.7021676404882984`*^9, 
+   3.7084732447318645`*^9, 3.7084733792131586`*^9, 3.7084747122046647`*^9, 
+   3.7084749620389557`*^9, 3.7084887291451917`*^9, 3.708488812590292*^9, 
+   3.70848891806005*^9, 3.708489248881689*^9, 3.7084893688807735`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Syntax", "::", "stresc"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Unknown string escape \\\\\[NoBreak]\\!\\(\\\"U\\\"\\)\
+\[NoBreak].\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.708489368975024*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Syntax", "::", "stresc"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Unknown string escape \\\\\[NoBreak]\\!\\(\\\"x\\\"\\)\
+\[NoBreak].\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.708489369067269*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Syntax", "::", "stresc"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Unknown string escape \\\\\[NoBreak]\\!\\(\\\"D\\\"\\)\
+\[NoBreak].\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.7084893691610184`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Syntax", "::", "stresc"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Unknown string escape \\\\\[NoBreak]\\!\\(\\\"M\\\"\\)\
+\[NoBreak].\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.7084893692532644`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SetDelayed", "::", "write"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Tag \[NoBreak]\\!\\(List\\)\[NoBreak] in \
+\[NoBreak]\\!\\(\\(\\({0.001992553189710484`, \\(\\(\\(\\(1.3753510935547828` \
+\[VeryThinSpace]\\)\\) - \\(\\(0.7057902222930579`\\\\ \[ImaginaryI]\\)\\)\\)\
+\\), \\(\\(\\(\\(1.3753510935547828` \[VeryThinSpace]\\)\\) + \
+\\(\\(0.7057902222930579`\\\\ \[ImaginaryI]\\)\\)\\)\\), \
+0.33601691369476505`}\\)\\)[zn_]\\)\[NoBreak] is Protected. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/write\\\", \
+ButtonNote -> \\\"SetDelayed::write\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.708489369327963*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SetDelayed", "::", "write"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Tag \[NoBreak]\\!\\(List\\)\[NoBreak] in \
+\[NoBreak]\\!\\(\\(\\({\\(\\(\\(\\(0.` \[VeryThinSpace]\\)\\) + \
+\\(\\(0.015794677969407908`\\\\ \[ImaginaryI]\\)\\)\\)\\), \
+\\(\\(\\(\\(0.2573499363659226` \[VeryThinSpace]\\)\\) - \
+\\(\\(0.13206451039737657`\\\\ \[ImaginaryI]\\)\\)\\)\\), \
+\\(\\(\\(\\(-0.2573499363659226`\\)\\) - \\(\\(0.13206451039737657`\\\\ \
+\[ImaginaryI]\\)\\)\\)\\), \\(\\(\\(\\(0.` \[VeryThinSpace]\\)\\) - \
+\\(\\(2.663556973781105`\\\\ \[ImaginaryI]\\)\\)\\)\\)}\\)\\)[zn_]\\)\
+\[NoBreak] is Protected. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/write\\\", ButtonNote -> \
+\\\"SetDelayed::write\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.708489369398651*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SetDelayed", "::", "write"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Tag \[NoBreak]\\!\\(List\\)\[NoBreak] in \
+\[NoBreak]\\!\\(\\(\\({0.001992553189710484`, \\(\\(\\(\\(1.3753510935547828` \
+\[VeryThinSpace]\\)\\) - \\(\\(0.7057902222930579`\\\\ \[ImaginaryI]\\)\\)\\)\
+\\), \\(\\(\\(\\(1.3753510935547828` \[VeryThinSpace]\\)\\) + \
+\\(\\(0.7057902222930579`\\\\ \[ImaginaryI]\\)\\)\\)\\), \
+0.33601691369476505`}\\)\\)[zn_]\\)\[NoBreak] is Protected. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/write\\\", \
+ButtonNote -> \\\"SetDelayed::write\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.708489369468869*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[\\(SetDelayed :: write\\), \
+\\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this calculation. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.708489369505989*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{
+   RowBox[{"\[CapitalDelta]", "=", "0.2"}], ";", 
+   RowBox[{"\[Mu]", "=", "0.3"}], ";", 
+   RowBox[{"m0", "=", "1.0"}], ";", 
+   RowBox[{"L0", "=", "5.0"}], ";", 
+   RowBox[{"En", "=", "0.2"}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"F0", "[", "zn_", "]"}], ":=", 
+    RowBox[{
+     FractionBox[
+      RowBox[{"zn", "*", "zn", "*", "zn", "*", "zn"}], 
+      RowBox[{"4.0", "*", "m0", "*", "m0"}]], "+", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        FractionBox["\[Mu]", "m0"], "-", 
+        RowBox[{"\[CapitalDelta]", "*", "\[CapitalDelta]"}]}], ")"}], "*", 
+      "zn", "*", "zn"}], "+", 
+     RowBox[{"\[Mu]", "*", "\[Mu]"}], "-", 
+     RowBox[{"En", "*", "En"}]}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"zpn", "=", 
+    RowBox[{"zn", "/.", 
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"F0", "[", "zn", "]"}], "\[Equal]", "0"}], ",", "zn"}], 
+      "]"}]}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"xn", "=", "zpn"}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"z1", "=", 
+    RowBox[{"Part", "[", 
+     RowBox[{"xn", ",", "1"}], "]"}]}], ";", 
+   RowBox[{"z2", "=", 
+    RowBox[{"Part", "[", 
+     RowBox[{"xn", ",", "2"}], "]"}]}], ";", 
+   RowBox[{"z3", "=", 
+    RowBox[{"Part", "[", 
+     RowBox[{"xn", ",", "3"}], "]"}]}], ";", 
+   RowBox[{"z4", "=", 
+    RowBox[{"Part", "[", 
+     RowBox[{"xn", ",", "4"}], "]"}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"F1", "[", "zn_", "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"zn", "*", "zn"}], 
+       RowBox[{"2.0", "*", "m0"}]], "+", "\[Mu]", "-", "En"}], ")"}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]", 
+ RowBox[{
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     StyleBox[
+      RowBox[{"F2", "[", "zn_", "]"}],
+      FontSize->16], 
+     StyleBox[":=",
+      FontSize->16], 
+     FractionBox[
+      RowBox[{"F1", "[", "zn", "]"}], 
+      RowBox[{
+       StyleBox[" ",
+        FontSize->16], 
+       RowBox[{
+        StyleBox["zn",
+         FontSize->16], 
+        StyleBox["*",
+         FontSize->16], 
+        RowBox[{
+         StyleBox["Tanh",
+          FontSize->16], 
+         StyleBox["[",
+          FontSize->16], 
+         FractionBox[
+          RowBox[{"zn", "*", "L0"}], "2"], 
+         StyleBox["]",
+          FontSize->16]}]}]}]]}], ";"}],
+   FontSize->16], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"cha", "=", 
+    RowBox[{
+     RowBox[{"F2", "[", "z3", "]"}], "-", 
+     RowBox[{"F2", "[", "z4", "]"}]}]}], ";"}],
+  FontSize->16], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.702165097071472*^9, 3.7021651178532257`*^9}, {
+   3.7021651932177258`*^9, 3.702165244827368*^9}, {3.702165383625937*^9, 
+   3.702165486036319*^9}, {3.702165520408718*^9, 3.7021660428704677`*^9}, {
+   3.702166075083321*^9, 3.702166294042776*^9}, {3.7021663482352715`*^9, 
+   3.702166491633089*^9}, {3.7021665419427967`*^9, 3.7021665621521544`*^9}, {
+   3.702166687081414*^9, 3.7021669468138337`*^9}, {3.7021669885874915`*^9, 
+   3.7021670083735113`*^9}, 3.702167047231099*^9, {3.702167087980029*^9, 
+   3.7021671137453227`*^9}, 3.702167747479619*^9, 3.7084730683939266`*^9, 
+   3.7084730985218573`*^9, {3.708473147384218*^9, 3.7084731489544325`*^9}, {
+   3.7084731804735622`*^9, 3.7084731820066805`*^9}, {3.708474448800537*^9, 
+   3.7084744786617455`*^9}, {3.7084746680476437`*^9, 
+   3.7084746718680964`*^9}, {3.7084747541193876`*^9, 3.708474870672431*^9}, 
+   3.70848884146957*^9}],
+
+Cell["", "Text",
+ CellChangeTimes->{{3.708473956783393*^9, 3.7084740251392903`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.708473071465763*^9, 3.708473071465763*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.7021659962924023`*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.702166570327935*^9, 3.7021665755646777`*^9}, {
+   3.7021666261261373`*^9, 3.702166658663254*^9}, 3.708473073384436*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7084730751543207`*^9, 3.708473075169493*^9}}]
+},
+WindowSize->{1520, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+TaggingRules->{"SearchInProgress" -> False},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 10478, 276, 538, "Input"],
+Cell[11060, 300, 492, 7, 31, "Output"],
+Cell[11555, 309, 258, 7, 24, "Message"],
+Cell[11816, 318, 258, 7, 24, "Message"],
+Cell[12077, 327, 260, 7, 24, "Message"],
+Cell[12340, 336, 260, 7, 24, "Message"],
+Cell[12603, 345, 773, 14, 24, "Message"],
+Cell[13379, 361, 917, 17, 24, "Message"],
+Cell[14299, 380, 773, 14, 24, "Message"],
+Cell[15075, 396, 534, 11, 24, "Message"]
+}, Open  ]],
+Cell[15624, 410, 3760, 114, 331, "Input"],
+Cell[19387, 526, 84, 1, 30, "Text"],
+Cell[19474, 529, 92, 1, 31, "Input"],
+Cell[19569, 532, 70, 1, 31, "Input"],
+Cell[19642, 535, 168, 2, 31, "Input"],
+Cell[19813, 539, 94, 1, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
